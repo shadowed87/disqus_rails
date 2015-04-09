@@ -71,10 +71,9 @@ class @DisqusRails
     window.disqus_title = @disqusable_title || document.title
 
     (->
-      if typeof DISQUS == 'undefined'
-        dsq = document.createElement("script")
-        dsq.type = "text/javascript"
-        dsq.async = true
-        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js"
-        (document.getElementsByTagName("head")[0] or document.getElementsByTagName("body")[0]).appendChild dsq    
+      dsq = document.createElement("script")
+      dsq.type = "text/javascript"
+      dsq.async = true
+      dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js"
+      (document.getElementsByTagName("head")[0] or document.getElementsByTagName("body")[0]).appendChild dsq
     )()
