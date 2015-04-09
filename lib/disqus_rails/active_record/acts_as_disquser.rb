@@ -39,6 +39,14 @@ module DisqusRails
               data[:avatar] = send attributes[:avatar]
             end
           end
+          
+          if attributes.has_key?(:url)
+            if attributes[:url].is_a? Proc
+              data[:url] = instance_eval &attributes[:url]
+            else
+              data[:url] = send attributes[:url]
+            end
+          end
 
           data
         end
