@@ -16,6 +16,12 @@ module DisqusRails
       else
         attributes[:public_key] = DisqusRails::PUBLIC_KEY
       end
+      
+      if attributes.has_key?(:sso)
+        DisqusRails.const_set('SSO', attributes[:sso])
+      else
+        attributes[:sso] = DisqusRails::SSO
+      end
 
       if attributes.has_key?(:secret_key)
         DisqusRails.const_set('SECRET_KEY', attributes[:secret_key])
